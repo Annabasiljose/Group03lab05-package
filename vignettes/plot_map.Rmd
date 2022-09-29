@@ -17,3 +17,23 @@ knitr::opts_chunk$set(
 ```{r setup}
 library(Group03lab05package)
 ```
+## get_country_names()
+
+This method retrieves a list of all countries. 
+```{r,echo=FALSE}
+get_country_names()
+```
+
+## req_stamen_map()
+
+This method returns stamen map of country
+```{r,echo=FALSE}
+req_stamen_map(-73.987235, -33.768378, -34.729993, 5.244486, 5,"terrain")
+```
+
+## get_country_coordinates(name)
+
+This method returns the coordinates of a country
+```{r,echo=FALSE}
+get_country_coordinates("brazil")
+```
