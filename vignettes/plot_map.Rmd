@@ -13,26 +13,37 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 ```
+## Description for the ShinyApp 
+The ShinyApp takes three inputs name of the country, map type and zoom level. The user is expected to capture the name of the country,selects the map type (terrain,toner and water color) and finally zoom level(from 1 to 5).
 
-```{r setup}
+![**ShinyApp landing interface**](https://raw.githubusercontent.com/Annabasiljose/Group03lab05package/master/Lab05_1.png){width=60%}
+
+It takes those three inputs and requests for its map from **Group03lab05package package**, and then display it as shown on the snippet photo below.
+
+![**ShinyApp map display**](https://raw.githubusercontent.com/Annabasiljose/Group03lab05package/master/Lab05_2.png){width=60%}
+
+## Description for the package(Group03lab05package)
+
+```{r,echo=FALSE ,eval=TRUE}
 library(Group03lab05package)
 ```
+
 ## get_country_names()
 
-This method retrieves a list of all countries. 
+This method retrieves a list of all countries along with its geographical coordinates. 
 ```{r,echo=FALSE}
-get_country_names()
+get_country_names()[1:5]
 ```
 
 ## get_country_coordinates(name)
 
-This method returns the coordinates of a country
-```{r,echo=FALSE}
+This method returns the coordinates of a country in the format c(lowerleftlon, lowerleftlat, upperrightlon, upperrightlat).
+```{r,echo=TRUE}
 get_country_coordinates("brazil")
 ```
 ## req_stamen_map(left, bottom, right, top, zoom_val,map_type)
 
-This method returns stamen map of country
-```{r,echo=FALSE}
+This method returns stamen map of country. It takes some few seconds to get a map as it is directly downloaded from stamen maps API.
+```{r,echo=TRUE}
 req_stamen_map(-73.987235, -33.768378, -34.729993, 5.244486, 5,"terrain")
 ```
