@@ -1,16 +1,21 @@
 Package: Group03lab05package
-Title: What the Package Does (One Line, Title Case)
-Version: 0.0.0.9000
-Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
+Title: Package interacts with the API for stamen tiles and returns a map
+Version: 1.0.0
+Authors@R: c(
+    person("Bright David", "NIYIBIZI", email = "brini581@student.liu.se", role = c("aut", "cre")),
+    person("Anna Basil","Jose", email = "annjo768@student.liu.se", role = c("aut", "ctb")))
+Description: This package has functions that interact with the Stamen API to get the plot of the country specified. The package has three functions: get_country_coordinates, get_country_names, req_stamen_map.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.1
 Depends:
   ggmap,
+  shiny
+Imports:
+  shinythemes,
+  shinyvalidate,
+  stringr,
   jsonlite
 Suggests: 
     knitr,

@@ -9,7 +9,13 @@
 #' @param map_type the type of map
 #' @return stamenmap
 #' @import ggmap
-#' @import jsonlite
+#' @import shiny
+#' @importFrom shiny validate
+#' @import shinythemes
+#' @import shinyvalidate
+#' @import stringr
+#' @importFrom jsonlite fromJSON
+#'
 #' @export get_country_names
 #' @export req_stamen_map
 #' @export get_country_coordinates
@@ -17,7 +23,10 @@
 #'
 # Load R packages
 library(ggmap)
+library(shiny)
 library(jsonlite)
+library(shinyvalidate)
+library(shinythemes)
 
 #get the name and coordinates of all countries included
 #' @name  get_country_names
@@ -36,6 +45,8 @@ get_country_names <- function(){
 #Process and Return Map
 req_stamen_map <- function(left, bottom, right, top, zoom_val,
                            map_type){
+  stopifnot(zoom_val <= 5)
+  stopifnot(map_type %in% c("terrain", "toner", "watercolor"))
   stamen_map <- ggmap(get_stamenmap(bbox=c(left, bottom,
           right, top), zoom = zoom_val, maptype = map_type))
   return(stamen_map)
@@ -51,6 +62,7 @@ req_stamen_map <- function(left, bottom, right, top, zoom_val,
 #'
 get_country_coordinates <- function(name){
   json_data_frame <- get_country_names()
+  stopifnot(name %in% names(json_data_frame))
   if(name != ""){
     if(name %in% colnames(json_data_frame)){
       return(c(json_data_frame[name][1,],
