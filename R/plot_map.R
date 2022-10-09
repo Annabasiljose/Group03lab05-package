@@ -73,7 +73,7 @@ get_country_coordinates <- function(name){
                  json_data_frame[name][4,]))
    
     }else{
-      stop("Input a valid country name")
+      stop("Input a valid country name!")
     }
        
     
