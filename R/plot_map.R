@@ -62,13 +62,21 @@ req_stamen_map <- function(left, bottom, right, top, zoom_val,
 #'
 get_country_coordinates <- function(name){
   json_data_frame <- get_country_names()
-  stopifnot(name %in% names(json_data_frame))
+  
   if(name != ""){
-    if(name %in% colnames(json_data_frame)){
-      return(c(json_data_frame[name][1,],
-               json_data_frame[name][2,],
-               json_data_frame[name][3,],
-               json_data_frame[name][4,]))
+    if((name %in% names(json_data_frame))){
+      
+      
+        return(c(json_data_frame[name][1,],
+                 json_data_frame[name][2,],
+                 json_data_frame[name][3,],
+                 json_data_frame[name][4,]))
+   
+    }else{
+      stop("Input a valid country name")
     }
+       
+    
+   
   }
 }
